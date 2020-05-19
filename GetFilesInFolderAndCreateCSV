@@ -5,18 +5,18 @@ from os.path import isfile, join
 import csv
 
 # initialize the read and wite paths
-readPath = "readpath/folder"
-writePath = "writepath/folder"
+readPath = 'readpath/folder'
+writePath = 'writepath/folder'
 
 # loops through the files in the read path and gets all FILES that ENDS WITH .fileExtension
-filesInFolder = [f for f in listdir(readPath) if isfile(join(readPath, f)) and f.endswith(".fileExtension")]
+filesInFolder = [f for f in listdir(readPath) if isfile(join(readPath, f)) and f.endswith('.fileExtension')]
 
 # create sthe list.csv file in writepath and pushes in the files list
-with open(writePath + "/list.csv", 'w', newline ='') as myfile:
-    wr = csv.writer(myfile, delimiter="\n")
+with open(writePath + '/list.csv', 'w', newline ='') as myfile:
+    wr = csv.writer(myfile, delimiter='\n')
     wr.writerow(filesInFolder)
 
-print("Done!")
+print('Done!')
 
 #########################################################################################################
 
@@ -27,14 +27,14 @@ from os.path import isfile, join
 import pandas as pd
 
 # initialize the read and wite paths
-readPath = "readpath/folder"
-writePath = "writepath/folder"
+readPath = 'readpath/folder'
+writePath = 'writepath/folder'
 
 # loops through the files in the read path and gets all FILES that ENDS WITH .fileExtension
-filesInFolder = [f for f in listdir(readPath) if isfile(join(readPath, f)) and f.endswith(".fileExtension")]
+filesInFolder = [f for f in listdir(readPath) if isfile(join(readPath, f)) and f.endswith('.fileExtension')]
 
 # Create a dataframe from the list and uses pandas to create the csv file
-df = pd.DataFrame(filesInFolder, columns=["filesInFolder"])
-df.to_csv(writePath + "/list.csv", index=False)
+df = pd.DataFrame(filesInFolder, columns=['filesInFolder'])
+df.to_csv(writePath + '/list.csv', index=False)
 
-print("Done!")
+print('Done!')
