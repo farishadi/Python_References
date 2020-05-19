@@ -1,10 +1,6 @@
 # Python3 program to Filter or Filter Out 
 # list of strings based on another list 
 
-# Sample List initializations
-string = ['city1', 'class5', 'room2', 'city2'] 
-substr = ['class', 'city'] 
-
 # taken from website : https://www.geeksforgeeks.org/python-filter-list-of-strings-based-on-the-substring-list/?ref=rp
 def Filter(string, substr): 
     return [str for str in string if
@@ -15,6 +11,26 @@ def FilterOut(string, substr):
     return [str for str in string if
         all(sub not in str for sub in substr)] 
 
+# Regular expression library
+import re
+
+# Similar to Filter, but utilizing list with Regular Expressions as substring
+def FilterRegEx(string, substr): 
+    return [str for str in string if
+        any(re.search(sub, str) for sub in substr)] 
+
+# Similar to FilterOut, but utilizing list with Regular Expressions as substring
+def FilterOutRegEx(string, substr): 
+    return [str for str in string if
+        all(not re.search(sub, str) for sub in substr)] 
+
+# Sample List initializations
+string = ['city1', 'class5', 'room2', 'city2'] 
+substr = ['class', 'city'] 
+substrRegEx = ['cit.+', 'class.'] 
+
 # Driver code 
-print(Filter(string, substr))     # Output : ['city1', 'class5', 'city2']
-print(FilterOut(string, substr))  # Output : ['room2']
+print(Filter(string, substr))               # Output : ['city1', 'class5', 'city2']
+print(FilterOut(string, substr))            # Output : ['room2']
+print(FilterRegEx(string, substrRegEx))     # Output : ['city1', 'class5', 'city2']
+print(FilterOutRegEx(string, substrRegEx))  # Output : ['room2']
