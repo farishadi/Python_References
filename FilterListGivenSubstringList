@@ -11,6 +11,7 @@ def FilterOut(string, substr):
     return [str for str in string if
         all(sub not in str for sub in substr)] 
 
+# Regular Expression codes referenced from website : https://www.educative.io/edpresso/how-to-implement-wildcards-in-python
 # Regular expression library
 import re
 
