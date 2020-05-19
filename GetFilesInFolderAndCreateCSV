@@ -1,0 +1,34 @@
+# csv writerow method
+
+from os import listdir
+from os.path import isfile, join
+import csv
+
+readPath = "readpath/folder"
+writePath = "writepath/folder"
+
+filesInFolder = [f for f in listdir(readPath) if isfile(join(readPath, f)) and f.endswith(".VG2")]
+
+with open(writePath + "/list.csv", 'w', newline ='') as myfile:
+    wr = csv.writer(myfile, delimiter="\n")
+    wr.writerow(filesInFolder)
+
+print("Done!")
+
+#########################################################################################################
+
+# pandas method
+
+from os import listdir
+from os.path import isfile, join
+import pandas as pd
+
+readPath = "readpath/folder"
+writePath = "writepath/folder"
+
+filesInFolder = [f for f in listdir(readPath) if isfile(join(readPath, f)) and f.endswith(".VG2")]
+
+df = pd.DataFrame(filesInFolder, columns=["filesInFolder"])
+df.to_csv(writePath + "/list.csv", index=False)
+
+print("Done!")
